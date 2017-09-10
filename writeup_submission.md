@@ -53,11 +53,11 @@ You're reading it! and here is a link to my [project code](https://github.com/ud
 
 Here is a list of pictures for each class in the dataset:
 
-![image1]
+![alt text][image2]
 
 Here is histogram of the number of classes in each of the data partitions (training, validation, and test).
 
-![image2]
+![alt text][image2]
 
 ### Design and Test a Model Architecture
 
