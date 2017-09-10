@@ -19,8 +19,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./plots/sign_pictures.png "class pictures"
-[image2]: ./plots/classes_histogram.png "classes histogram"
+[sign_pictures]: ./plots/sign_pictures.png "class pictures"
+[classes_histogram]: ./plots/classes_histogram.png "classes histogram"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
@@ -53,11 +53,11 @@ You're reading it! and here is a link to my [project code](https://github.com/ud
 
 Here is a list of pictures for each class in the dataset:
 
-![alt text][image2]
+![alt text][sign_pictures]
 
 Here is histogram of the number of classes in each of the data partitions (training, validation, and test).
 
-![alt text][image2]
+![alt text][classes_histogram]
 
 ### Design and Test a Model Architecture
 
