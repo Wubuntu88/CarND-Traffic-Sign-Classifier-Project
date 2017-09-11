@@ -59,13 +59,29 @@ Here is histogram of the number of classes in each of the data partitions (train
 
 ![alt text][classes_histogram]
 
+# Description of Histogram
+ The histogram above shows the number of pictures that belong to each class. Some classes have few pictures (under 250), and some have many (close to 2000). The histograms of the training, test, and validation data have the same shapes, meaning that records for a given class were proportionally distributed accross the data sets.
+
 ### Design and Test a Model Architecture
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+I decided to normalize the image with the following funtion:
+```python
+def normalize_image(image):
+    """
+    @param: image (Numpy array representing an image)
+    Note: 128.0 is the midpoint used for normalization
+    """
+    return (image - 128.0) / 128.0
 
-Here is an example of a traffic sign image before and after grayscaling.
+X_train = normalize_image(X_train)
+X_valid = normalize_image(X_valid)
+X_test = normalize_image(X_test)
+```
+
+The pixel values range from 0 to 255.  In this normalization, the new range is [-1, 1). 
+
 
 ![alt text][image2]
 
