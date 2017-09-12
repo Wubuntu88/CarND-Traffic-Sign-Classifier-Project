@@ -97,10 +97,10 @@ My final model consisted of the following layers:
 | RELU					|												|
 | Fully connected layer		|         									|
 | RELU					|												|
-| DROPOT					| keep_probability = 75% |
+| DROPOUT					| keep_probability = 75% |
 | Fully connected	layer	| etc.        									|
 | RELU					|												|
-| DROPOT					| keep_probability = 75% |
+| DROPOUT					| keep_probability = 75% |
 | Fully connected		| etc.        									|
 
 
