@@ -19,8 +19,8 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./plots/sign_pictures.png "class pictures"
-[image2]: ./plots/classes_histogram.png "classes histogram"
+[sign_pictures]: ./plots/sign_pictures.png "class pictures"
+[classes_histogram]: ./plots/classes_histogram.png "classes histogram"
 [image3]: ./examples/random_noise.jpg "Random Noise"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
@@ -53,34 +53,36 @@ You're reading it! and here is a link to my [project code](https://github.com/ud
 
 Here is a list of pictures for each class in the dataset:
 
-![alt text][image2]
+![alt text][sign_pictures]
 
 Here is histogram of the number of classes in each of the data partitions (training, validation, and test).
 
-![alt text][image2]
+![alt text][classes_histogram]
+
+# Description of Histogram
+ The histogram above shows the number of pictures that belong to each class. Some classes have few pictures (under 250), and some have many (close to 2000). The histograms of the training, test, and validation data have the same shapes, meaning that records for a given class were proportionally distributed accross the data sets.
 
 ### Design and Test a Model Architecture
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+I decided to normalize the image with the following function:
+```python
+def normalize_image(image):
+    """
+    @param: image (Numpy array representing an image)
+    Note: 128.0 is the midpoint used for normalization
+    """
+    return (image - 128.0) / 128.0
 
-Here is an example of a traffic sign image before and after grayscaling.
+X_train = normalize_image(X_train)
+X_valid = normalize_image(X_valid)
+X_test = normalize_image(X_test)
+```
 
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
+The pixel values range from 0 to 255.  In this normalization, the new range is \[-1, 1).
+I also tried a normalization where the new range would be \[0, 1), but that did not seem to give any better results, so I stuck with a range of \[-1, 1).
+I did not turn the image to greyscale.  The reason is that I thought There would be too much data loss, because the colors in traffic signs are important.  However, I did not try greyscale so I do not know if this is the case.
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -89,15 +91,17 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 32x32x32 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 32x32x32 	|
+| RELU					|												|
+| Fully connected layer		|         									|
+| RELU					|												|
+| DROPOUT					| keep_probability = 75% |
+| Fully connected	layer	| etc.        									|
+| RELU					|												|
+| DROPOUT					| keep_probability = 75% |
 | Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
- 
 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
