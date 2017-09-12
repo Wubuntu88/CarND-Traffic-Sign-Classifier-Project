@@ -21,7 +21,9 @@ The goals / steps of this project are the following:
 
 [sign_pictures]: ./plots/sign_pictures.png "class pictures"
 [classes_histogram]: ./plots/classes_histogram.png "classes histogram"
-[image3]: ./examples/random_noise.jpg "Random Noise"
+[loss_graph]: ./plots/loss.png "loss graph"
+[accuracy_graph]: ./plots/accuracy.png "accuracy graph"
+
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
@@ -98,15 +100,21 @@ My final model consisted of the following layers:
 | Fully connected layer		|         									|
 | RELU					|												|
 | DROPOUT					| keep_probability = 75% |
-| Fully connected	layer	| etc.        									|
+| Fully connected	layer	|         									|
 | RELU					|												|
 | DROPOUT					| keep_probability = 75% |
-| Fully connected		| etc.        									|
+| Fully connected		|         									|
 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an ....
+I used an Adam Optimizer to train the model.  It was used in the LeNet model so I kept it.  It is supposedly more sophisticated than plain SGD.  I figured that if the LeNet model used it, it would be a good optimizer.
+
+The batch size I chose was 128.  For some reason, when I chose a larger batch size, my performance went down.  I'm not sure why, and I feel like that should not happen.
+
+The number of epochs was 200.  In general, the longer I trained it, the better my results were.  The strange thing is that the loss would get gradually worse for each epoch, but suddenly drop significantly.  Another strange thing is this sharp dropoff was not apparent in the accuracy.
+
+The learning rate was set to .0001.  I played around with the learning rate quite a bit.  I decided on a slow learning rate because that gave me a more gradual curve.  A slower learning rate is better, and I had a GPU and time, so I just kept the slow learning rate.  Also, faster learning rates did not seem to end up with a great result.
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
@@ -114,6 +122,10 @@ My final model results were:
 * training set accuracy of ?
 * validation set accuracy of ? 
 * test set accuracy of ?
+
+![alt text][loss_graph]
+
+![alt text][accuracy_graph]
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
