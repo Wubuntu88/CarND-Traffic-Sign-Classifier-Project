@@ -94,16 +94,13 @@ My final model consisted of the following layers:
 | Convolution 5x5     	| 1x1 stride, valid padding, outputs 32x32x32 	|
 | RELU					|												|
 | Convolution 5x5     	| 1x1 stride, valid padding, outputs 32x32x32 	|
-
-##### FILL IN THIS PART!
-
 | RELU					|												|
-| Fully connected		| etc.        									|
+| Fully connected layer		|         									|
 | RELU					|												|
-| DROPOT					|												|
-| Fully connected		| etc.        									|
+| DROPOT					| keep_probability = 75% |
+| Fully connected	layer	| etc.        									|
 | RELU					|												|
-| DROPOT					|												|
+| DROPOT					| keep_probability = 75% |
 | Fully connected		| etc.        									|
 
 
