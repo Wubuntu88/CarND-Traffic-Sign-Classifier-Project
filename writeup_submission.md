@@ -119,19 +119,52 @@ The learning rate was set to .0001.  I played around with the learning rate quit
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
 
+# training_accuracy: 0.999
+training_loss: 0.00224
+
+# validation_accuracy: 0.934
+validation_loss: 0.445
+
+# test_accuracy: 0.93
+test_loss: 0.602
+
+17, 35, 18, 17, 40, 27, 40, 12, 12  <-- actual labels
+12, 12, 11, 40, 11, 12, 11, 12, 11 <-- predicted labels
+# accuracy on images from the web: 0.111
+
+# Note: on other runs of my algorithm, I would get validation accuracy results of around 9.4, but on my most recently saved network, the result is 0.934.
+
+## Here are two graphs that represent the loss and accuracy of my network through the epochs.  A horizontal line is drawn at .93 to show the goal accuracy on the second graph.
 ![alt text][loss_graph]
 
 ![alt text][accuracy_graph]
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
+# I first tried the LeNet architecture that was used in the tensorflow lab.  I chose it because I could easily use the material from the lab, and it was easy to understand the architecture.
 * What were some problems with the initial architecture?
+# The architecture did not alone achive good enough accuracy to put it over the .93 threshold.
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
+ I will discuss pooling, dropout, and the activation functions.
+# Pooling
+ I decided to remove pooling because I thought that It would diminish my data at each convolutional layer, and that change would not benefit the accuracy.  When I compared my solution with and without pooling, pooling tended to give my network worse accuracies, so I got rid of that component.
+ # Dropout
+  I tried my model with and without dropout several times.  From what I saw, it seemed like dropout gave worse results when I had fewer epochs, but the same results when the number of epochs was high (around 200).  This makes sense, because dropout makes several of the weights inactive at the layer, and unable to adjust at a given epoch.  Thus, it is natural that it would take longer for the network to train.  Eventually with enough epochs, the network gave comarable accuracies with dropout compared to without.  I decided to keep dropout because I was willing to wait the extra time.
+ # Activation Functions.
+  I decided to use relus after each layer, as that was the recomended activation function.  I steered clear of the softmax function for the terminal activation function and did not have a terminal activation function.  I had not know that this was possible, but I saw other examples leaving out the terminal activation function, so I followed suit.  I tried the softmax terminal activation function several times and got horrible results, so that is another reason I left it out.
 * Which parameters were tuned? How were they adjusted and why?
+# Learning Rate
+I experimented with many learning rates.  I finally arrived at the learning rate of 0.0001.  I found that higher learning rates would max out the accuracy quickly and at a lower level that the slower learning rate.  I compared the loss curves and setted on this learning rate because the loss curve was a more gradual slope downward than higher learning rates.  This low learning rate also gave relatively good accuracy after many epochs.  The loss curve in the graph above does seem steep - too steep in fact.  But remember that I use many epochs, so the curve looks steeper than it should.  This learning rate gave a much more gradual loss curve than higher learning rates.
+# Dropout's Keep Probability
+ I chose a keep_prob for the dropout of 75%.  This number was somewhat arbitrarily chosen.  I did not go lower because I didn't want the network to take too long to train; I did not go higher because I thought that the higher one chooses the probability, the more that defeates the purpose of doing dropout.
+# Number of Filters
+ I chose to have 32 filters for each layer of the convnet.  The rationale for the number 32 was that I wanted as many filters as possible without the model taking forever to finish.  32 ended up being a good number because it allowed me to reach the .93 threshold, and it reached it in a reasonable amount of time.  I had tried 64 filters; that took a long time and did not give me better results than the 32 filter model.
+  The LeNet model increases the number of filters for each convolutional layer.  I tried increasing and decreasing the number of filters for each layer, as well as keeping them the same, and there was not much difference, so I just kept the filters the same for each convolutional layer.
+# Convolution Size and Stride
+ I chose a 5x5 convolution and a stride of 1.  The reason for choosing the 5x5 convolution was because it is a standard convolution size and I thought it would give good results.  I chose the stride length of 1 because I did not want to loose too much information by downsampling the image aggressively with a higher stride.
+# Padding
+ I chose valid padding because it was used in LeNet, and I didn't want to have to deal with recomputing the dimensions of the network with the other padding type.
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
 If a well known architecture was chosen:
