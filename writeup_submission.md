@@ -24,11 +24,12 @@ The goals / steps of this project are the following:
 [loss_graph]: ./plots/loss.png "loss graph"
 [accuracy_graph]: ./plots/accuracy.png "accuracy graph"
 
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[tf1]: ./GermanTrafficSigns/AheadOnly.jpeg "Traffic Sign 1"
+[tf2]: ./GermanTrafficSigns/GeneralCaution.jpeg "Traffic Sign 2"
+[tf3]: ./GermanTrafficSigns/NoEntry1.jpeg "Traffic Sign 3"
+[tf4]: ./GermanTrafficSigns/Pedestrians.jpeg "Traffic Sign 4"
+[tf5]: ./GermanTrafficSigns/PriorityRoad.jpeg "Traffic Sign 5"
+[tf6]: ./GermanTrafficSigns/RoundaboutMandatory.jpeg "Traffic Sign 6"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -179,8 +180,8 @@ If a well known architecture was chosen:
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][tf1] ![alt text][tf2] ![alt text][tf3] 
+![alt text][tf4] ![alt text][tf5] ![alt text][tf6]
 
 The first image might be difficult to classify because ...
 
