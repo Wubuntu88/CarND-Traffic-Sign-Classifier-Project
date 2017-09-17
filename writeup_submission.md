@@ -27,9 +27,12 @@ The goals / steps of this project are the following:
 [tf1]: ./GermanTrafficSigns/AheadOnly.jpeg "Traffic Sign 1"
 [tf2]: ./GermanTrafficSigns/GeneralCaution.jpeg "Traffic Sign 2"
 [tf3]: ./GermanTrafficSigns/NoEntry1.jpeg "Traffic Sign 3"
-[tf4]: ./GermanTrafficSigns/Pedestrians.jpeg "Traffic Sign 4"
-[tf5]: ./GermanTrafficSigns/PriorityRoad.jpeg "Traffic Sign 5"
-[tf6]: ./GermanTrafficSigns/RoundaboutMandatory.jpeg "Traffic Sign 6"
+[tf4]: ./GermanTrafficSigns/NoEntry2.jpeg "Traffic Sign 4"
+[tf5]: ./GermanTrafficSigns/Pedestrians.jpeg "Traffic Sign 5"
+[tf6]: ./GermanTrafficSigns/PriorityRoad.jpeg "Traffic Sign 6"
+[tf7]: ./GermanTrafficSigns/PriorityRoad2.jpeg "Traffic Sign 7"
+[tf8]: ./GermanTrafficSigns/RoundaboutMandatory.jpeg "Traffic Sign 8"
+[tf9]: ./GermanTrafficSigns/RoundaboutMandatory2.jpeg "Traffic Sign 9"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -83,7 +86,7 @@ X_valid = normalize_image(X_valid)
 X_test = normalize_image(X_test)
 ```
 
-The pixel values range from 0 to 255.  In this normalization, the new range is \[-1, 1).
+The pixel values range from 0 to 255.  In this normalization, the new range is \[-1, 1).  The reason for this normalization is for the algorithm having an easier time dealing with the data.  Because the range is smaller, the floating point values can have better precision.  Because all of the images have the same range of values, normalization is not as beneficial as when the variable are of different ranges.
 I also tried a normalization where the new range would be \[0, 1), but that did not seem to give any better results, so I stuck with a range of \[-1, 1).
 I did not turn the image to greyscale.  The reason is that I thought There would be too much data loss, because the colors in traffic signs are important.  However, I did not try greyscale so I do not know if this is the case.
 
@@ -136,7 +139,7 @@ test_loss: 0.602
 
 #### Note: on other runs of my algorithm, I would get validation accuracy results of around 9.4, but on my most recently saved network, the result is 0.934.
 
-## Here are two graphs that represent the loss and accuracy of my network through the epochs.  A horizontal line is drawn at .93 to show the goal accuracy on the second graph.
+#### Here are two graphs that represent the loss and accuracy of my network through the epochs.  A horizontal line is drawn at .93 to show the goal accuracy on the second graph.
 ![alt text][loss_graph]
 
 ![alt text][accuracy_graph]
@@ -170,8 +173,11 @@ I experimented with many learning rates.  I finally arrived at the learning rate
 
 If a well known architecture was chosen:
 * What architecture was chosen?
+# I chose to base my model on Lenet because it easy to modify and does a fairly good job at image classification.
 * Why did you believe it would be relevant to the traffic sign application?
+# I do not belive that the model is specifically relevant to traffic signs, just images in general.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+# The modified model does achieve an accuracy on the validation set above the threshold value (.93), and the accuracy on the test set is not bad (0.93).
  
 
 ### Test a Model on New Images
@@ -182,8 +188,9 @@ Here are five German traffic signs that I found on the web:
 
 ![alt text][tf1] ![alt text][tf2] ![alt text][tf3] 
 ![alt text][tf4] ![alt text][tf5] ![alt text][tf6]
+![alt text][tf7] ![alt text][tf8] ![alt text][tf9]
 
-The first image might be difficult to classify because ...
+ Difficulties classifying these images may be due to several reasons.  First, some of the images are not centered in the picture, and there are irrelevant colorful backgrounds.  Second, there are Getty Images labels over some of the signs, which degrades the image's integrity.  Third, I had to resize the images.  This makes some of the images look awkward and have possibly different scales than the images in the training set.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -191,11 +198,15 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+|No entry|Right-of-way at the next intersection
+|Ahead only|Priority road
+|General caution|Wild animals crossing
+|No entry|Right-of-way at the next intersection
+|Roundabout mandatory|General caution
+|Pedestrians|Right-of-way at the next intersection
+|Roundabout mandatory|Wild animals crossing
+|Priority road|Priority road
+|Priority road|Wild animals crossing
 
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
