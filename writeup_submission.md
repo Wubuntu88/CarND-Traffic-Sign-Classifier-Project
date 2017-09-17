@@ -195,21 +195,24 @@ Here are five German traffic signs that I found on the web:
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
+[17, 35, 18, 17, 40, 27, 40, 12, 12]  <-- actual labels
+[17, 13, 18, 17, 40, 18, 40, 12, 12] <-- predicted labels
+accuracy on images from the web: 0.778
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-|No entry|Right-of-way at the next intersection
-|Ahead only|Priority road
-|General caution|Wild animals crossing
-|No entry|Right-of-way at the next intersection
-|Roundabout mandatory|General caution
-|Pedestrians|Right-of-way at the next intersection
-|Roundabout mandatory|Wild animals crossing
+|No entry|No entry
+|Ahead only|Yield
+|General caution|General caution
+|No entry|No entry
+|Roundabout mandatory|Roundabout mandatory
+|Pedestrians|General caution
+|Roundabout mandatory|Roundabout mandatory
 |Priority road|Priority road
-|Priority road|Wild animals crossing
+|Priority road|Priority road
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 1 out of the 9 traffic signs.  This is obviously quite bad.  I think that it has something to do with my image rescaling.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
