@@ -212,7 +212,11 @@ accuracy on images from the web: 0.778
 |Priority road|Priority road
 
 
-The model was able to correctly guess 1 out of the 9 traffic signs.  This is obviously quite bad.  I think that it has something to do with my image rescaling.
+The model was able to correctly guess 7 out of the 9 traffic signs.  This is decent classification accuracy.  Previously I had been getting results of 0% accuracy, but that was because when the jpegs were loaded, they were loaded with a range of 0 to 1, and my image normalization was all wrong.
+
+The AheadOnly sign was misclassified as Yield.  These signs are quite different.  The only reason that I can think of that would cause this is that there is a large, colorful background in the AheadOnly sign.  That perhaps gave a incorrect classification.
+
+The Pedestrians sign was misclassified as a general caution.  This is understandable because the signs look alike; both are triangles with red border, white inside, and a black image.  I am not sure how to fix this misclassification other than to have a better classifier. 
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
