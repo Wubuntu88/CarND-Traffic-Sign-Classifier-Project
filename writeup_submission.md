@@ -256,7 +256,7 @@ predictions:   \[      40,        7,       11,        2,       42]
 
 labels:        \[Roundabout mandatory, Speed limit (100km/h), Right-of-way at the next intersection, Speed limit (50km/h), End of no passing by vehicles over 3.5 metric tons]
 
-### Pedestrians; but General Caution was predicted (incorrect) | picture 6
+### Pedestrians; but No Passing was predicted (incorrect) | picture 6
 probabilities: \[     1.0, 3.64e-09, 7.82e-14, 3.93e-14, 3.85e-14]
 
 predictions:   \[       9,       30,       20,       10,       18]
@@ -284,6 +284,9 @@ predictions:   \[      12,       26,       15,       16,       25]
 
 labels:        \[Priority road, Traffic signals, No vehicles, Vehicles over 3.5 metric tons prohibited, Road work]
 
+### Insights
+The confidence of each prediction is very high.  Almost all of them are shown to be one (a perfect one because they are rounded up).  The only image not one is picture 2, which is 0.736 confident, and was incorrectly classified.  It is a good thing that the incorrectly classified image was not classified correctly.  In fact, the real class is not in the top 5, leading me to think that the colorful background of that image makes it hard to detect.
+The Other image that was incorrectly classified was the 'Pedestrians' sign misclassified as 'No Passing'.  Both are signs have red borders and white in the middle.  One disturbing fact is that it was misclassified as 'No Passing' with 100% confidence using softmax, but misclassified as 'General Caution' without softmax.  This makes me think that I did something wrong using TensorFlow, but I am not sure what.
 
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
