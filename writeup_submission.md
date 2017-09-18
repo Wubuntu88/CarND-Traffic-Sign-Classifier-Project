@@ -173,11 +173,11 @@ I experimented with many learning rates.  I finally arrived at the learning rate
 
 If a well known architecture was chosen:
 * What architecture was chosen?
-# I chose to base my model on Lenet because it easy to modify and does a fairly good job at image classification.
+#### I chose to base my model on Lenet because it easy to modify and does a fairly good job at image classification.
 * Why did you believe it would be relevant to the traffic sign application?
-# I do not belive that the model is specifically relevant to traffic signs, just images in general.
+#### I do not belive that the model is specifically relevant to traffic signs, just images in general.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
-# The modified model does achieve an accuracy on the validation set above the threshold value (.93), and the accuracy on the test set is not bad (0.93).
+#### The modified model does achieve an accuracy on the validation set above the threshold value (.93), and the accuracy on the test set is not bad (0.93).
  
 
 ### Test a Model on New Images
