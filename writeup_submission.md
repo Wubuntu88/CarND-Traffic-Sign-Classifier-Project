@@ -221,62 +221,63 @@ The Pedestrians sign was misclassified as a general caution.  This is understand
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The summary predictions are as follows:
+### No Entry (correct) | (picture 1)
 probabilities: \[     1.0, 1.83e-19, 7.23e-25, 2.25e-26, 1.93e-26]
 
 predictions:   \[      17,       14,       25,       28,       32]
 
 labels:        \[No entry, Stop    , Road work, Children crossing, End of all speed and passing limits]
 
-
+### Ahead Only ; but Yield was predicted (incorrect) | (picture 2)
 probabilities: \[   0.736,    0.141,   0.0722,    0.041,  0.00531]
 
 predictions:   \[       2,       22,       40,       39,        8]
 
 labels:        \[Speed limit (50km/h), Bumpy road, Roundabout mandatory, Keep left, Speed limit (120km/h)]
 
-
+### General Caution (correct) | (picture 3)
 probabilities: \[     1.0, 2.43e-20, 1.08e-20, 4.82e-23, 3.49e-25]
 
 predictions:   \[      18,       37,       40,       26,       11]
 
 labels:        \[General caution, Go straight or left, Roundabout mandatory, Traffic signals, Right-of-way at the next intersection]
 
-
+### No Entry (correct) | (picture 4)
 probabilities: \[     1.0, 1.05e-13, 5.15e-14, 4.06e-15, 2.83e-16]
 
 predictions:   \[      17,        1,        0,       30,       13]
 
 labels:        \[No entry, Speed limit (30km/h), Speed limit (20km/h), Beware of ice/snow, Yield   ]
 
-
+### Roundabout Mandatory (correct) | (picture 5)
 probabilities: \[     1.0, 2.56e-07, 5.59e-09, 2.17e-09,  1.9e-09]
 
 predictions:   \[      40,        7,       11,        2,       42]
 
 labels:        \[Roundabout mandatory, Speed limit (100km/h), Right-of-way at the next intersection, Speed limit (50km/h), End of no passing by vehicles over 3.5 metric tons]
 
-
+### Pedestrians; but General Caution was predicted (incorrect) | picture 6
 probabilities: \[     1.0, 3.64e-09, 7.82e-14, 3.93e-14, 3.85e-14]
 
 predictions:   \[       9,       30,       20,       10,       18]
 
 labels:        \[No passing, Beware of ice/snow, Dangerous curve to the right, No passing for vehicles over 3.5 metric tons, General caution]
 
-
+### Roundabout Mandatory (correct) | (picture 7)
 probabilities: \[     1.0, 6.18e-19,  2.9e-19, 7.36e-22, 5.94e-22]
 
 predictions:   \[      40,       37,       38,        2,       39]
 
 labels:        \[Roundabout mandatory, Go straight or left, Keep right, Speed limit (50km/h), Keep left]
 
-
+### Priority Road (correct) | (picture 8)
 probabilities: \[     1.0,  1.7e-29,      0.0,      0.0,      0.0]
 
 predictions:   \[      12,        6,        0,        1,        2]
 
 labels:        \[Priority road, End of speed limit (80km/h), Speed limit (20km/h), Speed limit (30km/h), Speed limit (50km/h)]
 
-
+### Priority Road (correct) | (picture 9)
 probabilities: \[     1.0, 4.12e-07, 7.39e-08, 5.01e-11, 2.48e-11]
 
 predictions:   \[      12,       26,       15,       16,       25]
