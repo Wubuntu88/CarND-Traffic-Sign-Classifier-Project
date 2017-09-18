@@ -61,7 +61,7 @@ Here is a list of pictures for each class in the dataset:
 
 ![alt text][sign_pictures]
 
-Here is histogram of the number of classes in each of the data partitions (training, validation, and test).
+Here is histogram of the number of pictures in each class in each of the data partitions (training, validation, and test).
 
 ![alt text][classes_histogram]
 
@@ -88,7 +88,7 @@ X_test = normalize_image(X_test)
 
 The pixel values range from 0 to 255.  In this normalization, the new range is \[-1, 1).  The reason for this normalization is for the algorithm having an easier time dealing with the data.  Because the range is smaller, the floating point values can have better precision.  Because all of the images have the same range of values, normalization is not as beneficial as when the variable are of different ranges.
 I also tried a normalization where the new range would be \[0, 1), but that did not seem to give any better results, so I stuck with a range of \[-1, 1).
-I did not turn the image to greyscale.  The reason is that I thought There would be too much data loss, because the colors in traffic signs are important.  However, I did not try greyscale so I do not know if this is the case.
+I did not turn the image to greyscale.  The reason is that I thought there would be too much data loss, because the colors in traffic signs are important.  However, I did not try greyscale so I do not know if this is the case.
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -112,7 +112,7 @@ My final model consisted of the following layers:
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-I used an Adam Optimizer to train the model.  It was used in the LeNet model so I kept it.  It is supposedly more sophisticated than plain SGD.  I figured that if the LeNet model used it, it would be a good optimizer.
+I used an Adam Optimizer to train the model.  It was used in the LeNet model so I kept it.  It is supposedly more sophisticated than plain SGD.  I thought that if the LeNet model used it, it would be a good optimizer.
 
 The batch size I chose was 128.  For some reason, when I chose a larger batch size, my performance went down.  I'm not sure why, and I feel like that should not happen.
 
@@ -152,7 +152,7 @@ If an iterative approach was chosen:
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
  I will discuss pooling, dropout, and the activation functions.
 #### Pooling
- I decided to remove pooling because I thought that It would diminish my data at each convolutional layer, and that change would not benefit the accuracy.  When I compared my solution with and without pooling, pooling tended to give my network worse accuracies, so I got rid of that component.
+ I decided to remove pooling because I thought that it would diminish my data at each convolutional layer, and that change would not benefit the accuracy.  When I compared my solution with and without pooling, pooling tended to give my network worse accuracies, so I got rid of that component.
 #### Dropout
   I tried my model with and without dropout several times.  From what I saw, it seemed like dropout gave worse results when I had fewer epochs, but the same results when the number of epochs was high (around 200).  This makes sense, because dropout makes several of the weights inactive at the layer, and unable to adjust at a given epoch.  Thus, it is natural that it would take longer for the network to train.  Eventually with enough epochs, the network gave comarable accuracies with dropout compared to without.  I decided to keep dropout because I was willing to wait the extra time.
 #### Activation Functions.
@@ -220,20 +220,43 @@ The Pedestrians sign was misclassified as a general caution.  This is understand
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The summary predictions are as follows:
+probabilities: \[     1.0, 1.83e-19, 7.23e-25, 2.25e-26, 1.93e-26]
+predictions:   \[      17,       14,       25,       28,       32]
+labels:        \[No entry, Stop    , Road work, Children crossing, End of all speed and passing limits]
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+probabilities: \[   0.736,    0.141,   0.0722,    0.041,  0.00531]
+predictions:   \[       2,       22,       40,       39,        8]
+labels:        \[Speed limit (50km/h), Bumpy road, Roundabout mandatory, Keep left, Speed limit (120km/h)]
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+probabilities: \[     1.0, 2.43e-20, 1.08e-20, 4.82e-23, 3.49e-25]
+predictions:   \[      18,       37,       40,       26,       11]
+labels:        \[General caution, Go straight or left, Roundabout mandatory, Traffic signals, Right-of-way at the next intersection]
 
+probabilities: \[     1.0, 1.05e-13, 5.15e-14, 4.06e-15, 2.83e-16]
+predictions:   \[      17,        1,        0,       30,       13]
+labels:        \[No entry, Speed limit (30km/h), Speed limit (20km/h), Beware of ice/snow, Yield   ]
 
-For the second image ... 
+probabilities: \[     1.0, 2.56e-07, 5.59e-09, 2.17e-09,  1.9e-09]
+predictions:   \[      40,        7,       11,        2,       42]
+labels:        \[Roundabout mandatory, Speed limit (100km/h), Right-of-way at the next intersection, Speed limit (50km/h), End of no passing by vehicles over 3.5 metric tons]
+
+probabilities: \[     1.0, 3.64e-09, 7.82e-14, 3.93e-14, 3.85e-14]
+predictions:   \[       9,       30,       20,       10,       18]
+labels:        \[No passing, Beware of ice/snow, Dangerous curve to the right, No passing for vehicles over 3.5 metric tons, General caution]
+
+probabilities: \[     1.0, 6.18e-19,  2.9e-19, 7.36e-22, 5.94e-22]
+predictions:   \[      40,       37,       38,        2,       39]
+labels:        \[Roundabout mandatory, Go straight or left, Keep right, Speed limit (50km/h), Keep left]
+
+probabilities: \[     1.0,  1.7e-29,      0.0,      0.0,      0.0]
+predictions:   \[      12,        6,        0,        1,        2]
+labels:        \[Priority road, End of speed limit (80km/h), Speed limit (20km/h), Speed limit (30km/h), Speed limit (50km/h)]
+
+probabilities: \[     1.0, 4.12e-07, 7.39e-08, 5.01e-11, 2.48e-11]
+predictions:   \[      12,       26,       15,       16,       25]
+labels:        \[Priority road, Traffic signals, No vehicles, Vehicles over 3.5 metric tons prohibited, Road work]
+
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
