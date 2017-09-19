@@ -191,8 +191,10 @@ Here are nine German traffic signs that I found on the web:
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
-[17, 35, 18, 17, 40, 27, 40, 12, 12]  <-- actual labels
-[17, 13, 18, 17, 40, 18, 40, 12, 12] <-- predicted labels
+
+\[17, 35, 18, 17, 40, 27, 40, 12, 12]  <-- actual labels
+
+\[17, 13, 18, 17, 40, 18, 40, 12, 12] <-- predicted labels
 accuracy on images from the web: 0.778
 
 | Image			        |     Prediction	        					| 
