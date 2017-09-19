@@ -29,7 +29,7 @@ The goals / steps of this project are the following:
 [tf3]: ./GermanTrafficSigns/NoEntry1.jpeg "Traffic Sign 3"
 [tf4]: ./GermanTrafficSigns/NoEntry2.jpeg "Traffic Sign 4"
 [tf5]: ./GermanTrafficSigns/Pedestrians.jpeg "Traffic Sign 5"
-[tf6]: ./GermanTrafficSigns/PriorityRoad.jpeg "Traffic Sign 6"
+[tf6]: ./GermanTrafficSigns/PriorityRoad1.jpeg "Traffic Sign 6"
 [tf7]: ./GermanTrafficSigns/PriorityRoad2.jpeg "Traffic Sign 7"
 [tf8]: ./GermanTrafficSigns/RoundaboutMandatory.jpeg "Traffic Sign 8"
 [tf9]: ./GermanTrafficSigns/RoundaboutMandatory2.jpeg "Traffic Sign 9"
