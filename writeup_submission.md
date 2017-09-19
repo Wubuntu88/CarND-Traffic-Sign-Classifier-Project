@@ -197,6 +197,8 @@ Here are the results of the prediction:
 \[17, 13, 18, 17, 40, 18, 40, 12, 12] <-- predicted labels
 accuracy on images from the web: 0.778
 
+*My note: The accuracy on the images from the web is below the accuracy on the test set.  The sample size is small on the test set, and two more predictions would have made 100% accurate on the images from the internet.  To see how the images on the internet truly compared to the test set images, we would have to get many more samples from the internet.
+
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 |No entry|No entry
