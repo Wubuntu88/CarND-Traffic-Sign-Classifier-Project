@@ -133,10 +133,6 @@ validation_loss: 0.445
 #### test_accuracy: 0.93
 test_loss: 0.602
 
-17, 35, 18, 17, 40, 27, 40, 12, 12  <-- actual labels
-12, 12, 11, 40, 11, 12, 11, 12, 11 <-- predicted labels
-#### accuracy on images from the web: 0.111
-
 #### Note: on other runs of my algorithm, I would get validation accuracy results of around 9.4, but on my most recently saved network, the result is 0.934.
 
 #### Here are two graphs that represent the loss and accuracy of my network through the epochs.  A horizontal line is drawn at .93 to show the goal accuracy on the second graph.
